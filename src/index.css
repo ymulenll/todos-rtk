@@ -1,13 +1,148 @@
 body {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f5f5;
+  color: #111111;
+  max-width: 550px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+:focus {
+  outline: 0;
+}
+
+input::placeholder {
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.spinner {
+  color: #a16f6f;
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+.todos-section {
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 200;
+  text-align: center;
+  color: #b83f45;
+  margin: 0.5rem;
+}
+
+.todo-input {
+  margin: 0;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  line-height: 1.4em;
+  padding: 16px 16px 16px 60px;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+}
+
+.todo-list {
+  border-top: 1px solid #e6e6e6;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.todo-list li {
+  position: relative;
+  font-size: 24px;
+  border-top: 1px solid #ededed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-list li .toggle-todo {
+  cursor: pointer;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  border: none;
+  opacity: 0;
+}
+
+.todo-list li .toggle-todo + .todo-text {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+.todo-list li .toggle-todo:checked + .todo-text {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E");
+}
+
+.todo-list li .todo-text {
+  word-break: break-all;
+  padding: 15px 15px 15px 50px;
+  line-height: 1.2;
+  transition: color 0.4s;
+  font-weight: 400;
+  color: #4d4d4d;
+}
+
+.todo-list li.completed .todo-text {
+  color: #cdcdcd;
+  text-decoration: line-through;
+}
+
+.todo-list li .delete-todo {
+  visibility: hidden;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  font-size: 30px;
+  transition: color 0.2s ease-out;
+  color: #cc9a9a;
+}
+
+.todo-list li .delete-todo:after {
+  content: "×";
+}
+
+.todo-list li .delete-todo:hover {
+  color: #af5b5e;
+}
+
+.todo-list li:hover .delete-todo {
+  visibility: visible;
+}
+
+.delete-todo {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
 }

@@ -7,6 +7,7 @@ import {
   FETCH_TODOS_SUCCESS,
   TodosState,
 } from "./todo.types";
+import { getMaxTodoId } from "../utils";
 
 const initialState: TodosState = {
   items: [],
@@ -24,11 +25,7 @@ export default function todoReducer(state = initialState, action: any) {
           {
             text: action.payload,
             completed: false,
-            id:
-              state.items.reduce(
-                (maxId, todo) => Math.max(todo.id, maxId),
-                -1
-              ) + 1,
+            id: getMaxTodoId(state.items) + 1,
           },
         ],
       };

@@ -1,9 +1,9 @@
-import { useDispatch } from "react-redux";
-import { addTodo } from "../redux/todo.actions";
+import { addTodo } from "../redux/todo.slice";
 import { FormEvent, useState } from "react";
+import { useAppDispatch } from "../hooks/redux";
 
 export function AddTodoForm() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [text, setText] = useState("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

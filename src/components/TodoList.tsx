@@ -1,20 +1,15 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { TodosState } from "../redux/todo.types";
-import { getTodos } from "../redux/todo.actions";
+import { getTodos } from "../redux/todo.slice";
 import { TodoItem } from "./TodoItem";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
 export function TodoList() {
-  const loading = useSelector(
-    (state: { todos: TodosState }) => state.todos.loading
-  );
-  const todos = useSelector(
-    (state: { todos: TodosState }) => state.todos.items
-  );
+  const loading = useAppSelector((state) => state.todos.loading);
+  const todos = useAppSelector((state) => state.todos.items);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getTodos() as any);
+    dispatch(getTodos());
   }, [dispatch]);
 
   if (loading) {

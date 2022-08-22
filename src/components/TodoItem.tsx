@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
-import { deleteTodo, checkTodo } from "../redux/todo.actions";
+import { useAppDispatch } from "../hooks/redux";
+import { deleteTodo, checkTodo } from "../redux/todo.slice";
 import { Todo } from "../redux/todo.types";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export function TodoItem({ todo }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <li className={todo.completed ? "completed" : ""}>
       <input
